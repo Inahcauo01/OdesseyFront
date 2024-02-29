@@ -662,6 +662,7 @@ header {
 
 /*cards destinations*/
 .carte {
+  margin: 2rem 0;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -718,10 +719,11 @@ header {
 .partie-centre {
   width: 100%;
   max-width: 40%;
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  justify-content: space-around;
+  height: 100%;
 }
 
 .partie-droite {
@@ -754,6 +756,9 @@ header {
   background: #ffffff;
   box-shadow:  20px 20px 60px #d9d9d9,
   -20px -20px 60px #ffffff;
+}
+.partie-description{
+  height: 100%;
 }
 
 .partie-gauche > button{

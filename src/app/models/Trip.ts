@@ -6,6 +6,10 @@ export interface Trip {
   status? : string,
   seats? : number,
   accommodation? : string,
+  city? : string,
+  country? : string,
+  title? : string,
+  description? : string,
 }
 
 export class CTrip implements Trip {
@@ -17,5 +21,9 @@ export class CTrip implements Trip {
     status? : string,
     seats? : number,
     accommodation? : string,
+    city? : string,
+    country? : string,
+    title? : string,
+    description? : string,
   ){}
 }

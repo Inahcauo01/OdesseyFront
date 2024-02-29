@@ -36,30 +36,19 @@
   </div>
 
 
-
-  <div class="destination__grid">
-    <div *ngFor="let trip of trips" class="destination__card">
-      <img src="assets/destination-1.jpg" alt="destination" />
-      <div class="destination__details">
-        <p class="destination__title">{{ trip.accommodation }}</p>
-        <p class="destination__subtitle">{{ trip.departureDate }}</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="carte">
+  <div class="carte" *ngFor="let trip of trips">
     <div class="partie-droite">
       <img class="image-card" src="assets/destination-1.jpg" alt="Image de la destination">
     </div>
     <div class="partie-centre">
-      <h1>Title of the trip</h1>
-      <div>
-        <p>lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+      <h1>{{ trip.title }}</h1>
+      <div class="partie-description">
+        <p>{{ trip.description }}</p>
       </div>
       <ul class="ul-partie">
         <li>7D/6N</li>
-        <li>pax: 10</li>
-        <li>Malaysia</li>
+        <li>pax: {{ trip.seats }}</li>
+        <li>{{ trip.city }}, {{ trip.country }}</li>
       </ul>
     </div>
     <div class="partie-gauche">
