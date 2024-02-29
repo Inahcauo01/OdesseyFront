@@ -1,0 +1,74 @@
+<section class="section__container destination__container">
+  <div class="section__header">
+    <div>
+      <h2 class="section__title">Explore top destinations</h2>
+    </div>
+    <div class="destination__nav">
+      <button class="destination__nav-btn">
+        Design Your Dream Trip
+      </button>
+    </div>
+  </div>
+
+  <div class="trip-search">
+    <div class="search-group">
+      <label for="searchInput">Search</label>
+      <input type="text" id="searchInput" placeholder="Search ...">
+    </div>
+    <div class="date-input">
+      <label for="startDate">Start Date</label>
+      <input type="date" id="startDate">
+    </div>
+    <div class="date-input">
+      <label for="endDate">End Date</label>
+      <input type="date" id="endDate">
+    </div>
+    <div class="accommodation">
+      <label for="filterSelect">Accommodation</label>
+      <select id="filterSelect">
+        <option value="all">All</option>
+        <option value="hotel">Hotel</option>
+        <option value="hostel">Hostel</option>
+        <option value="motel">Motel</option>
+      </select>
+    </div>
+    <button class="apply-btn" onclick="applyFilters()">Search</button>
+  </div>
+
+
+
+  <div class="destination__grid">
+    <div *ngFor="let trip of trips" class="destination__card">
+      <img src="assets/destination-1.jpg" alt="destination" />
+      <div class="destination__details">
+        <p class="destination__title">{{ trip.accommodation }}</p>
+        <p class="destination__subtitle">{{ trip.departureDate }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="carte">
+    <div class="partie-droite">
+      <img class="image-card" src="assets/destination-1.jpg" alt="Image de la destination">
+    </div>
+    <div class="partie-centre">
+      <h1>Title of the trip</h1>
+      <div>
+        <p>lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+      </div>
+      <ul class="ul-partie">
+        <li>7D/6N</li>
+        <li>pax: 10</li>
+        <li>Malaysia</li>
+      </ul>
+    </div>
+    <div class="partie-gauche">
+      <div class="rating-card">4.5 ★ <span>(25 reviews)</span></div>
+      <h2>2300 DH</h2>
+      <div class="per-person">/per person</div>
+      <button>Réserver</button>
+    </div>
+  </div>
+
+</section>
+
