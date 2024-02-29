@@ -667,12 +667,15 @@ header {
   width: 100%;
   background: whitesmoke;
   flex-wrap: wrap;
-  border-radius: 2rem;
+  border-top-left-radius: 3rem;
+  border-bottom-left-radius: 3rem;
   overflow: hidden;
   height: 18rem;
+  border-right: 0.5px solid  white;
 }
 
 .partie-gauche {
+  position: relative;
   width: 100%;
   max-width: 25%;
   background: cornflowerblue;
@@ -682,6 +685,34 @@ header {
   gap: 10px;
   align-items: center;
   color: white;
+  height: 100%;
+  border-left: 2px dashed  white;
+}
+.rightdotted{
+  width: 6px;
+  height: 100%;
+  position: absolute;
+  right: -4px;
+  border-right: 10px dotted white;
+}
+
+ .left {
+  position: absolute;
+  top: -40px;
+  left: -35px;
+   width: 70px;
+   height: 70px;
+   border-radius: 50%;
+   background: white;
+}
+.right {
+  position: absolute;
+  bottom: -40px;
+  left: -35px;
+   width: 70px;
+   height: 70px;
+   border-radius: 50%;
+   background: white;
 }
 
 .partie-centre {
