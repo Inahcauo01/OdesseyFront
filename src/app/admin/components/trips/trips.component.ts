@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import {Trip} from "../../models/Trip";
-import {TripService} from "../../services/trips/trip.service";
+import {Trip} from "../../../shared/models/Trip";
+import {TripService} from "../../../core/services/trips/trip.service";
 
 @Component({
-  selector: 'app-destinations',
-  templateUrl: './destinations.component.html',
-  styleUrl: './destinations.component.css'
+  selector: 'app-trips',
+  templateUrl: './trips.component.html',
+  styleUrl: './trips.component.css'
 })
-export class DestinationsComponent {
-
+export class TripsComponent {
   trips: Trip[] = [];
 
   constructor(private tripService: TripService) { }
@@ -25,4 +24,5 @@ export class DestinationsComponent {
       console.error('Error loading trips', error);
     });
   }
+
 }
