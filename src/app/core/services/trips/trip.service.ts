@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Trip} from "../../models/Trip";
+import {Trip} from "../../../shared/models/Trip";
 
 @Injectable({
   providedIn: 'root'
