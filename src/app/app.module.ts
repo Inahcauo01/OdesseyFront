@@ -13,6 +13,12 @@ import { NavbarComponent } from './admin/shared/navbar/navbar.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { AdminLayoutComponent } from './admin/sahred/admin-layout/admin-layout.component';
 import { TripsComponent } from './admin/components/trips/trips.component';
+import {FullCalendarModule} from "@fullcalendar/angular";
+import { CalendarComponent } from './admin/components/calendar/calendar.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
+import {LoginComponent} from "./shared/components/auth/login/login.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,12 +31,18 @@ import { TripsComponent } from './admin/components/trips/trips.component';
     NavbarComponent,
     DashboardComponent,
     AdminLayoutComponent,
-    TripsComponent
+    TripsComponent,
+    CalendarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FullCalendarModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
