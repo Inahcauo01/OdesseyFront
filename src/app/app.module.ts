@@ -11,7 +11,7 @@ import { DestinationsComponent } from './shared/components/destinations/destinat
 import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './admin/shared/navbar/navbar.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
-import { AdminLayoutComponent } from './admin/sahred/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './admin/shared/admin-layout/admin-layout.component';
 import { TripsComponent } from './admin/components/trips/trips.component';
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { CalendarComponent } from './admin/components/calendar/calendar.component';
