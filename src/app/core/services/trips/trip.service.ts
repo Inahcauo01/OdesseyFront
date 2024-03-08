@@ -30,4 +30,8 @@ export class TripService {
   getCities(countryId: number) {
     return this.http.get(`http://localhost:8080/api/v1/country/${countryId}/cities`);
   }
+
+  getAccommodations() {
+    return this.http.get('http://localhost:8080/api/v1/accommodation');
+  }
 }

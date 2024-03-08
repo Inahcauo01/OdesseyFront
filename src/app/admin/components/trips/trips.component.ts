@@ -12,6 +12,7 @@ export class TripsComponent {
   trip: Trip = new CTrip();
   countries: any[] = [];
   cities: any[] = [];
+  accommodations: any[] = [];
   selectedCountry: number | null = null;
 
   constructor(private tripService: TripService) { }
@@ -19,11 +20,11 @@ export class TripsComponent {
   ngOnInit(): void {
     this.getTrips();
     this.loadCountries();
+    this.loadAccommodations();
   }
 
   getTrips(): void {
     this.tripService.getTrips().subscribe((data: any) => {
-      console.log(data);
       this.trips = data.result;
     }, (error) => {
       console.error('Error loading trips', error);
@@ -50,5 +51,15 @@ export class TripsComponent {
     this.tripService.getCities(countryId).subscribe((cities:any) => {
       this.cities = cities.result;
     });
+  }
+
+  private loadAccommodations() {
+    this.tripService.getAccommodations().subscribe((data: any) => {
+      this.accommodations = data.result;
+    });
+  }
+
+  getDecodedImage(imageData: string): string {
+    return 'data:image/jpeg;base64,' + imageData;
   }
 }

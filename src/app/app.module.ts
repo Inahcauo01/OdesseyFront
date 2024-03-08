@@ -19,6 +19,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {LoginComponent} from "./shared/components/auth/login/login.component";
 import {FormsModule} from "@angular/forms";
+import { AccommodationsComponent } from './admin/components/accommodations/accommodations.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {FormsModule} from "@angular/forms";
     AdminLayoutComponent,
     TripsComponent,
     CalendarComponent,
-    LoginComponent
+    LoginComponent,
+    AccommodationsComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import {DashboardComponent} from "./admin/components/dashboard/dashboard.compone
 import {TripsComponent} from "./admin/components/trips/trips.component";
 import {CalendarComponent} from "./admin/components/calendar/calendar.component";
 import {LoginComponent} from "./shared/components/auth/login/login.component";
+import {AccommodationsComponent} from "./admin/components/accommodations/accommodations.component";
 
 const routes: Routes = [
   { path: '', component: LayoutComponent, children: [
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent},
       { path: 'trips', component: TripsComponent},
       { path: 'calendar', component: CalendarComponent},
+      { path: 'accommodations', component: AccommodationsComponent},
   ]},
 
   { path: 'login', component: LoginComponent },
