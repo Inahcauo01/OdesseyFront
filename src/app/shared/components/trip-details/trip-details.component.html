@@ -2,12 +2,11 @@
   <div class="col-span-3" *ngIf="images">
     <div class="grid grid-cols-2 gap-4">
       <ng-container *ngFor="let image of images; let i = index">
-        <div class="relative" *ngIf="i < 2 || i >= 2">
-          <img *ngIf="image.src && (i < 2 ? image.src.medium : image.src.large)"
-               [src]="i < 2 ? image.src.medium : image.src.large"
+        <div class="relative">
+          <img *ngIf="image && image.regular"
+               [src]="image.regular"
                alt="City Image"
-               class="w-full h-[44vh] object-cover rounded-lg object-center
-">
+               class="w-full h-[44vh] object-cover rounded-lg object-center">
         </div>
       </ng-container>
     </div>
