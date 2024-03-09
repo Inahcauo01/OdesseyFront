@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {CTrip, Trip} from "../../../shared/models/Trip";
 import {TripService} from "../../../core/services/trips/trip.service";
+import {initFlowbite} from "flowbite";
 
 @Component({
   selector: 'app-trips',
@@ -8,6 +9,7 @@ import {TripService} from "../../../core/services/trips/trip.service";
   styleUrl: './trips.component.css'
 })
 export class TripsComponent {
+
   trips: Trip[] = [];
   trip: Trip = new CTrip();
   countries: any[] = [];
@@ -15,9 +17,15 @@ export class TripsComponent {
   accommodations: any[] = [];
   selectedCountry: number | null = null;
 
+  showModal: boolean = false;
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
+
   constructor(private tripService: TripService) { }
 
   ngOnInit(): void {
+    initFlowbite();
     this.getTrips();
     this.loadCountries();
     this.loadAccommodations();
@@ -59,7 +67,4 @@ export class TripsComponent {
     });
   }
 
-  getDecodedImage(imageData: string): string {
-    return 'data:image/jpeg;base64,' + imageData;
-  }
 }

@@ -9,12 +9,14 @@ import {TripsComponent} from "./admin/components/trips/trips.component";
 import {CalendarComponent} from "./admin/components/calendar/calendar.component";
 import {LoginComponent} from "./shared/components/auth/login/login.component";
 import {AccommodationsComponent} from "./admin/components/accommodations/accommodations.component";
+import {TripDetailsComponent} from "./shared/components/trip-details/trip-details.component";
 
 const routes: Routes = [
   { path: '', component: LayoutComponent, children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent},
       { path: 'destinations', component: DestinationsComponent},
+      { path: 'trip-details/:id', component: TripDetailsComponent },
   ]},
 
   { path: 'admin', component: AdminLayoutComponent, children: [

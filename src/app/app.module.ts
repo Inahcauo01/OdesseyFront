@@ -20,6 +20,7 @@ import {ToastrModule} from "ngx-toastr";
 import {LoginComponent} from "./shared/components/auth/login/login.component";
 import {FormsModule} from "@angular/forms";
 import { AccommodationsComponent } from './admin/components/accommodations/accommodations.component';
+import { TripDetailsComponent } from './shared/components/trip-details/trip-details.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AccommodationsComponent } from './admin/components/accommodations/accom
     TripsComponent,
     CalendarComponent,
     LoginComponent,
-    AccommodationsComponent
+    AccommodationsComponent,
+    TripDetailsComponent
   ],
   imports: [
     BrowserModule,
