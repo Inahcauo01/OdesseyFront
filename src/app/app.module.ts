@@ -11,7 +11,7 @@ import { DestinationsComponent } from './shared/components/destinations/destinat
 import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './admin/shared/navbar/navbar.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
-import { AdminLayoutComponent } from './admin/sahred/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './admin/shared/admin-layout/admin-layout.component';
 import { TripsComponent } from './admin/components/trips/trips.component';
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { CalendarComponent } from './admin/components/calendar/calendar.component';
@@ -19,6 +19,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {LoginComponent} from "./shared/components/auth/login/login.component";
 import {FormsModule} from "@angular/forms";
+import { AccommodationsComponent } from './admin/components/accommodations/accommodations.component';
+import { TripDetailsComponent } from './shared/components/trip-details/trip-details.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {FormsModule} from "@angular/forms";
     AdminLayoutComponent,
     TripsComponent,
     CalendarComponent,
-    LoginComponent
+    LoginComponent,
+    AccommodationsComponent,
+    TripDetailsComponent
   ],
   imports: [
     BrowserModule,

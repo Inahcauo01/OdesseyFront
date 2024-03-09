@@ -1,0 +1,49 @@
+<div class="flex items-center justify-between mb-8">
+  <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200">Accommodations</h2>
+  <a href="#" class="flex items-center px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-md dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray">
+    Add new
+  </a>
+</div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          Image
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Name
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Type
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Address
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Action
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let accommodation of accommodations" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900">
+          <img src="{{ accommodation.imageName ? 'data:image/jpeg;base64,' + accommodation.imageName : 'assets/accommodation-default.jpg' }}" alt="Hotel" class="w-20 h-12 object-cover rounded-md">
+
+        </th>
+        <td class="px-6 py-4">
+          {{ accommodation.name }}
+        </td>
+        <td class="px-6 py-4">
+          {{ accommodation.type }}
+        </td>
+        <td class="px-6 py-4">
+          {{ accommodation.address }}
+        </td>
+        <td class="px-6 py-4">
+          <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

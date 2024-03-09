@@ -41,7 +41,7 @@
       <img class="image-card" src="assets/destination-1.jpg" alt="Image de la destination">
     </div>
     <div class="partie-centre">
-      <h1 class="text-2xl">{{ trip.title }}</h1>
+      <a class="text-2xl" [routerLink]="['/trip-details', trip.id]">{{ trip.title }}</a>
       <div class="partie-description mt-2">
         <p>{{ trip.description }}</p>
       </div>

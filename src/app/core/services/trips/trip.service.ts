@@ -22,4 +22,20 @@ export class TripService {
   addTrip(trip: Trip) {
     return this.http.post(this.apiUrl, trip);
   }
+
+  getCountries() {
+    return this.http.get('http://localhost:8080/api/v1/country');
+  }
+
+  getCities(countryId: number) {
+    return this.http.get(`http://localhost:8080/api/v1/country/${countryId}/cities`);
+  }
+
+  getAccommodations() {
+    return this.http.get('http://localhost:8080/api/v1/accommodation');
+  }
+
+  getTripDetails(id: number | undefined) {
+    return this.http.get(`http://localhost:8080/api/v1/trip/${id}`);
+  }
 }
