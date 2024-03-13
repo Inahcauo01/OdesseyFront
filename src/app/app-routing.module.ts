@@ -10,6 +10,7 @@ import {CalendarComponent} from "./admin/components/calendar/calendar.component"
 import {LoginComponent} from "./shared/components/auth/login/login.component";
 import {AccommodationsComponent} from "./admin/components/accommodations/accommodations.component";
 import {TripDetailsComponent} from "./shared/components/trip-details/trip-details.component";
+import {UserComponent} from "./admin/components/user/user.component";
 
 const routes: Routes = [
   { path: '', component: LayoutComponent, children: [
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'trips', component: TripsComponent},
       { path: 'calendar', component: CalendarComponent},
       { path: 'accommodations', component: AccommodationsComponent},
+      { path: 'users', component: UserComponent}
   ]},
 
   { path: 'login', component: LoginComponent },

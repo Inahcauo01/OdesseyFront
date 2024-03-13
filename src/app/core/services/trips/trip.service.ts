@@ -38,4 +38,8 @@ export class TripService {
   getTripDetails(id: number | undefined) {
     return this.http.get(`http://localhost:8080/api/v1/trip/${id}`);
   }
+
+  deleteTrip(id: number | undefined) {
+      return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }

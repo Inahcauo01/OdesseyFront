@@ -109,7 +109,40 @@
           </div>
         </td>
         <td class="px-6">
-          <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</button>
+          <button class="font-medium text-blue-600 dark:text-blue-500 mx-1" [routerLink]="['/trip-details', trip.id]">
+            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9ZM11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12Z" fill="#939393"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M21.83 11.2807C19.542 7.15186 15.8122 5 12 5C8.18777 5 4.45796 7.15186 2.17003 11.2807C1.94637 11.6844 1.94361 12.1821 2.16029 12.5876C4.41183 16.8013 8.1628 19 12 19C15.8372 19 19.5882 16.8013 21.8397 12.5876C22.0564 12.1821 22.0536 11.6844 21.83 11.2807ZM12 17C9.06097 17 6.04052 15.3724 4.09173 11.9487C6.06862 8.59614 9.07319 7 12 7C14.9268 7 17.9314 8.59614 19.9083 11.9487C17.9595 15.3724 14.939 17 12 17Z" fill="#939393"></path>
+              </g>
+            </svg>
+          </button>
+          <button class="font-medium text-blue-600 dark:text-blue-500 mx-1">
+            <svg width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier"> <title></title>
+                <g id="Complete"> <g id="edit"> <g>
+                  <path d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8" fill="none" stroke="#318CE7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                  <polygon fill="none" points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8" stroke="#318CE7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon> </g> </g>
+                </g>
+              </g>
+            </svg>
+          </button>
+          <button class="font-medium text-blue-600 dark:text-blue-500 mx-1" (click)="deleteTrip(trip.id)">
+            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path d="M10 11V17" stroke="#D70040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M14 11V17" stroke="#D70040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M4 7H20" stroke="#D70040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#D70040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#D70040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </svg>
+          </button>
         </td>
     </tr>
     </tbody>

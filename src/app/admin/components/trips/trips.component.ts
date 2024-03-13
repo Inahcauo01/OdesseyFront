@@ -85,4 +85,13 @@ export class TripsComponent {
       }
     });
   }
+
+  deleteTrip(id: number | undefined) {
+
+    if (confirm('Are you sure you want to delete this trip?'))
+    this.tripService.deleteTrip(id).subscribe((data: any) => {
+      this.toastr.success('Trip deleted successfully', 'Success');
+      this.getTrips();
+    });
+  }
 }
