@@ -19,4 +19,8 @@ export class UserService {
   getAllUsers() {
     return this.http.get('http://localhost:8080/api/v1/user');
   }
+
+  deleteUser(id: number | undefined) {
+    return this.http.delete(`http://localhost:8080/api/v1/user/${id}`);
+  }
 }

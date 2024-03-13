@@ -67,8 +67,18 @@ export class UserComponent {
     }
   }
 
-  deleteUser(id: number | undefined) {
-    this.toaster.warning('Not implemented yet');
+  deleteUser(id?: number) {
+    this.userService.deleteUser(id).subscribe(
+      (response) => {
+        this.toaster.success('User deleted successfully');
+        console.log('User deleted successfully', response);
+        this.users = this.users.filter(user => user.id !== id);
+      },
+      (error) => {
+        this.toaster.error('Error deleting user');
+        console.error('Error deleting user', error);
+      }
+    );
   }
 
 

@@ -45,4 +45,9 @@ export class LoginComponent {
     });
   }
 
+  isActive: boolean = false;
+
+  toggleContainer(active: boolean): void {
+    this.isActive = active;
+  }
 }
