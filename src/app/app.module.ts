@@ -18,9 +18,10 @@ import { CalendarComponent } from './admin/components/calendar/calendar.componen
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {LoginComponent} from "./shared/components/auth/login/login.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AccommodationsComponent } from './admin/components/accommodations/accommodations.component';
 import { TripDetailsComponent } from './shared/components/trip-details/trip-details.component';
+import { UserComponent } from './admin/components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -37,17 +38,19 @@ import { TripDetailsComponent } from './shared/components/trip-details/trip-deta
     CalendarComponent,
     LoginComponent,
     AccommodationsComponent,
-    TripDetailsComponent
+    TripDetailsComponent,
+    UserComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FullCalendarModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    FormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FullCalendarModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        FormsModule,
+        ReactiveFormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

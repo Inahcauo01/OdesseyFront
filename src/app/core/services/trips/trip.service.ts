@@ -27,8 +27,8 @@ export class TripService {
     return this.http.get('http://localhost:8080/api/v1/country');
   }
 
-  getCities(countryId: number) {
-    return this.http.get(`http://localhost:8080/api/v1/country/${countryId}/cities`);
+  getCities(countryName: string) {
+    return this.http.get(`http://localhost:8080/api/v1/country/${countryName}/cities`);
   }
 
   getAccommodations() {
@@ -37,5 +37,9 @@ export class TripService {
 
   getTripDetails(id: number | undefined) {
     return this.http.get(`http://localhost:8080/api/v1/trip/${id}`);
+  }
+
+  deleteTrip(id: number | undefined) {
+      return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

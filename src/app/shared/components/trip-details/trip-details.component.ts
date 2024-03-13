@@ -3,6 +3,8 @@ import {TripService} from "../../../core/services/trips/trip.service";
 import {ToastrService} from "ngx-toastr";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
+import {CTrip} from "../../models/Trip";
+import {initFlowbite} from "flowbite";
 
 @Component({
   selector: 'app-trip-details',
@@ -14,6 +16,7 @@ export class TripDetailsComponent {
   clientIdUnsplash: string = 'CkdF9AylTfIdadQ562jaXExUsnCTc2kCzzW0hl8MeOo';
   images: any[] = [];
   tripId?: number ;
+  tripDetails :any = new CTrip();
 
   constructor(private tripService: TripService,
               private toastr: ToastrService,
@@ -21,6 +24,7 @@ export class TripDetailsComponent {
               private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    initFlowbite();
     this.route.params.subscribe(params => {
       this.tripId = params['id'];
       this.getTripDetails();
@@ -31,6 +35,7 @@ export class TripDetailsComponent {
     const url = `https://api.pexels.com/v1/search?query=${city}&per_page=4`;
     this.http.get<any>(url, { headers: { Authorization: this.apiKeyPexels } }).subscribe(response => {
       this.images = response.photos.slice(0, 4);
+      console.log(this.images);
     });
   }
 
@@ -47,11 +52,15 @@ export class TripDetailsComponent {
 
   private getTripDetails() {
     this.tripService.getTripDetails(this.tripId).subscribe((data: any) => {
-      // this.getPexelsImage(data.result.city);
-      this.getUnsplashImages(data.result.city);
+      this.getPexelsImage(data.result.city);
+      // this.getUnsplashImages(data.result.city);
+      this.tripDetails = data.result;
     }, (error) => {
       this.toastr.error('Error loading trip details', 'Error');
     });
   }
 
+  reserveTrip() {
+    this.toastr.success('Trip reserved successfully', 'Success');
+  }
 }

@@ -1,0 +1,198 @@
+
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+    <div>
+      <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction"
+              class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+        <span class="sr-only">Action button</span>
+        Action
+        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+      </button>
+      <!-- Dropdown menu -->
+      <div id="dropdownAction"
+           class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
+          <li>
+            <a href="#"
+               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reward</a>
+          </li>
+          <li>
+            <a href="#"
+               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Promote</a>
+          </li>
+          <li>
+            <a href="#"
+               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Activate account</a>
+          </li>
+        </ul>
+        <div class="py-1">
+          <a href="#"
+             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete User</a>
+        </div>
+      </div>
+    </div>
+    <div class="relative">
+      <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+              class="block text-xs text-white bg-gray-700 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+        Add new user
+      </button>
+    </div>
+  </div>
+  <table class="w-full text-sm text-left rtl:text-right text-gray-400">
+    <caption class="sr-only">Trips</caption>
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <tr>
+      <th scope="col" class="px-2 py-3">
+        ID
+      </th>
+      <th scope="col" class="px-6 py-3">
+        USERNAME
+      </th>
+      <th scope="col" class="px-6 py-3">
+        NAME
+      </th>
+      <th scope="col" class="px-6 py-3">
+        FAMILY NAME
+      </th>
+      <th scope="col" class="px-6 py-3">
+        EMAIL
+      </th>
+      <th scope="col" class="px-6 py-3">
+        IDENTITY DOCUMENT
+      </th>
+      <th scope="col" class="px-6 py-3">
+        IDENTITY NUMBER
+      </th>
+      <th scope="col" class="px-6 py-3">
+        ROLES
+      </th>
+      <th scope="col" class="px-6 py-3">
+        Action
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users"
+        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+      <td class="px-2">
+        <div class="text-sm font-semibold">
+          {{ user.id }}
+        </div>
+      </td>
+      <th scope="row" class="flex items-center px-6 py-2 text-gray-900 whitespace-nowrap dark:text-white">
+        <div class="font-normal text-gray-500">{{ user.username }}</div>
+      </th>
+      <td class="px-6">
+        {{ user.name }}
+      </td>
+      <td class="px-6">
+        {{ user.familyName }}
+      </td>
+      <td class="px-6">
+        {{ user.email }}
+      </td>
+      <td class="px-6">
+        {{ user.identityDocument }}
+      </td>
+      <td class="px-6">
+        {{ user.identityNumber }}
+      </td>
+      <td class="px-6">
+        <span *ngFor="let role of user.authorities" class="px-2 py-0.5 text-white text-xs rounded-full me-2"
+              [ngClass]="{ 'bg-green-500': role === 'ROLE_USER', 'bg-blue-500': role === 'ROLE_ADMIN' }">
+          {{ role }}
+        </span>
+      </td>
+      <td class="px-6">
+        <button class="font-medium text-blue-600 dark:text-blue-500 mx-1">
+          <svg width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier"> <title></title>
+              <g id="Complete"> <g id="edit"> <g>
+                <path d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8" fill="none" stroke="#318CE7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                <polygon fill="none" points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8" stroke="#318CE7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon> </g> </g>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <button class="font-medium text-blue-600 dark:text-blue-500 mx-1" (click)="deleteUser(user.id)">
+          <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="M10 11V17" stroke="#D70040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M14 11V17" stroke="#D70040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M4 7H20" stroke="#D70040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#D70040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#D70040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Main modal -->
+  <div id="crud-modal" tabindex="-1" aria-hidden="true"
+       class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <!-- Modal header -->
+        <div class="flex items-center justify-between p-3 md:p-5 border-b rounded-t dark:border-gray-600">
+          <h3 class="text-md font-semibold text-gray-900 dark:text-white">
+            Add new user
+          </h3>
+          <button type="button"
+                  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <form [formGroup]="userForm" (ngSubmit)="addUser($event)" class="p-3 md:p-5">
+          <div class="mb-4">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" formControlName="username" class="w-full px-3 py-2 placeholder-gray-300 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter your username">
+          </div>
+          <div class="mb-4">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" formControlName="email" class="w-full px-3 py-2 placeholder-gray-300 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter your email">
+          </div>
+          <div class="grid gap-4 mb-4 grid-cols-2">
+            <div class="mb-4">
+              <label for="name" class="form-label">First name</label>
+              <input type="text" id="name" formControlName="name" class="w-full px-3 py-2 placeholder-gray-300 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter your name">
+            </div>
+            <div class="mb-4">
+              <label for="familyName" class="form-label">Last Name</label>
+              <input type="text" id="familyName" formControlName="familyName" class="w-full px-3 py-2 placeholder-gray-300 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter your family name">
+            </div>
+            <div class="mb-4">
+              <label for="identityDocument" class="form-label">Identity Document</label>
+              <select id="identityDocument" formControlName="identityDocument" class="w-full px-3 py-2 placeholder-gray-300 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <option value="PASSPORT">Passport</option>
+                <option value="CIN">ID Card</option>
+                <option value="CARTE_SEJOUR">Residence Permit</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label for="identityNumber" class="form-label">Identity Number</label>
+              <input type="text" id="identityNumber" formControlName="identityNumber" class="w-full px-3 py-2 placeholder-gray-300 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter your identity number">
+            </div>
+          </div>
+          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
