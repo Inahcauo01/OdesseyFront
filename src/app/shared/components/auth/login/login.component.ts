@@ -36,7 +36,7 @@ export class LoginComponent {
         this.toastr.success('Login Success');
         localStorage.setItem('accessToken', res.token);
         localStorage.setItem('refreshToken', res.refreshToken);
-        this.router.navigate(['/member']);
+        this.redirectByRole(res.token);
       } else {
         this.toastr.error('Login Failed');
       }
@@ -49,5 +49,19 @@ export class LoginComponent {
 
   toggleContainer(active: boolean): void {
     this.isActive = active;
+  }
+
+  private redirectByRole(token: string) {
+    // decode the token
+    const tokenData = JSON.parse(atob(token.split('.')[1]));
+    if (tokenData.roles.some((role: any) => role.authority === 'ROLE_ADMIN')) {
+      this.router.navigate(['/admin']);
+      // this.toastr.info('Admin role')
+    } else if (tokenData.roles.some((role: any) => role.authority === 'ROLE_USER')) {
+      this.router.navigate(['/']);
+      // this.toastr.info('User role')
+    } else {
+      this.toastr.error('Invalid Role');
+    }
   }
 }

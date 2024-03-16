@@ -14,6 +14,7 @@ export class PersonalInfoComponent {
   editMode = false;
   userInfo: User = new CUser();
   oldPassword: string = '';
+  identityDocuments: string[] = ['CIN', 'PASSPORT', 'CARTE_SEJOUR'];
 
   constructor(private userService: UserService,
               private toaster: ToastrService) { }
