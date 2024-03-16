@@ -33,8 +33,8 @@ export class UserComponent {
   }
 
   ngOnInit(): void {
-    initFlowbite();
     this.getAllUsers();
+    initFlowbite();
   }
 
   getAllUsers(): void {

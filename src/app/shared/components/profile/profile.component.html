@@ -1,0 +1,30 @@
+<div class="flex justify-center">
+  <!-- Sidebar/Navigation Bar -->
+  <div class="bg-gray-200 h-screen w-1/4 p-4 shadow-md">
+    <div class="nav__logo">ODESSEY<span>.</span></div>
+    <ul class="space-y-3 mt-4 mx-[-14px]">
+      <li>
+        <a routerLink="personal-info"
+             class="block py-2 px-4 hover:bg-gray-300 hover:border-b  hover:border-gray-800">
+        Personal Info
+        </a>
+      </li>
+      <li>
+        <a routerLink="my-reservation"
+           class="block py-2 px-4 hover:bg-gray-300 hover:border-b hover:border-gray-800">
+          My Reservations
+        </a>
+      </li>
+      <li>
+        <a routerLink="my-history"
+           class="block py-2 px-4 hover:bg-gray-300 hover:border-b hover:border-gray-800">
+          Reservation History
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- Main Content -->
+  <div class="w-3/4 p-6">
+    <router-outlet></router-outlet>
+  </div>
+</div>

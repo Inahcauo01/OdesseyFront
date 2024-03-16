@@ -52,8 +52,8 @@ export class TripDetailsComponent {
 
   private getTripDetails() {
     this.tripService.getTripDetails(this.tripId).subscribe((data: any) => {
-      this.getPexelsImage(data.result.city);
-      // this.getUnsplashImages(data.result.city);
+      // this.getPexelsImage(data.result.city);
+      this.getUnsplashImages(data.result.city);
       this.tripDetails = data.result;
     }, (error) => {
       this.toastr.error('Error loading trip details', 'Error');

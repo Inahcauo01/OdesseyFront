@@ -3,14 +3,14 @@
     <div class="grid grid-cols-2 gap-4">
       <ng-container *ngFor="let image of images; let i = index">
         <div class="relative">
-<!--          <img *ngIf="image && image.regular"-->
-<!--               [src]="image.regular"-->
-<!--               alt="City Image"-->
-<!--               class="w-full h-[44vh] object-cover rounded-lg object-center">-->
-          <img *ngIf="image && image.src.large"
-               [src]="image.src.large"
+          <img *ngIf="image && image.regular"
+               [src]="image.regular"
                alt="City Image"
                class="w-full h-[44vh] object-cover rounded-lg object-center">
+<!--          <img *ngIf="image && image.src.large"-->
+<!--               [src]="image.src.large"-->
+<!--               alt="City Image"-->
+<!--               class="w-full h-[44vh] object-cover rounded-lg object-center">-->
         </div>
       </ng-container>
     </div>
