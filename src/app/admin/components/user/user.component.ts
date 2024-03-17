@@ -4,6 +4,7 @@ import {UserService} from "../../../core/services/user/user.service";
 import {ToastrService} from "ngx-toastr";
 import {CUser, User} from "../../../shared/models/User";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {EmailService} from "../../../core/services/email/email.service";
 
 @Component({
   selector: 'app-user',
@@ -16,6 +17,7 @@ export class UserComponent {
   userForm: FormGroup;
 
   constructor(private userService: UserService,
+              private emailService: EmailService,
               private toaster: ToastrService,
               private fb: FormBuilder) {
     this.userForm = this.fb.group({
@@ -31,8 +33,8 @@ export class UserComponent {
   }
 
   ngOnInit(): void {
-    initFlowbite();
     this.getAllUsers();
+    initFlowbite();
   }
 
   getAllUsers(): void {
@@ -53,8 +55,55 @@ export class UserComponent {
       this.userService.registerUser(this.userForm.value).subscribe(
         (response) => {
           this.toaster.success('User registered successfully');
-          console.log('User registered successfully', response);
           this.users.push(this.userForm.value);
+          this.emailService.sendEmail(
+            {
+              to: this.userForm.value.email,
+              subject: 'Odyssey Travel Group',
+              // text: `Dear ${this.userForm.value.name} ${this.userForm.value.familyName},<br><br>Thank you for joining us! We're excited to have you on board.<br><br>Your account details are as follows:<br><b>Username: "${this.userForm.value.username}"<br>Password: "${this.userForm.value.password}"</b><br><br>Feel free to log in and explore our platform.<br><br>Best regards,<br></b><br><br></b><br>The Admin Team at Odyssey Travel Group <br><br>PS: This is an automated email, please do not reply. <br><br> Odyssey Travel Group © 2024<br> All rights reserved.<br> 50000 Meknes, MOROCCO<br> +212 690329765`
+              text: `
+                <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; font-family: Arial, sans-serif;">
+                  <div style="font-size: 1.2rem; font-weight: 600; color: var(--text-dark); cursor: pointer;">ODYSSEY<span style="color: var(--primary-color);">.</span></div>
+                  <div style="line-height: 1.6;">
+                      <p>
+                          Dear ${this.userForm.value.name} ${this.userForm.value.familyName},
+                      </p>
+                      <p>
+                          Thank you for joining us! We're excited to have you on board.
+                      </p>
+                      <p>
+                          Your account details are as follows:
+                      </p>
+                      <p style="font-weight: bold;">
+                          Username: "${this.userForm.value.username}"<br>
+                          Password: "${this.userForm.value.password}"
+                      </p>
+                      <p>
+                          Feel free to log in and explore our platform.
+                      </p>
+                      <p>
+                          Best regards,
+                          <br>
+                          The Admin Team at Odyssey Travel Group
+                      </p>
+                      <p style="font-size: 0.8rem;">
+                          PS: This is an automated email, please do not reply.
+                      </p>
+                      <p style="font-size: 0.8rem;">
+                          Odyssey Travel Group © 2024<br>
+                          All rights reserved.<br>
+                          50000 Meknes, MOROCCO<br>
+                          +212 690329765
+                      </p>
+                  </div>
+                </div>
+              `
+            }
+          ).subscribe(
+            (response) => {
+              this.toaster.success('Email sent successfully');
+            }
+          );
           this.userForm.reset();
         },
         (error) => {

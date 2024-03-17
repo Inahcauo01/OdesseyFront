@@ -39,6 +39,8 @@ export class AccommodationsComponent {
         this.accommodations.push(response.result);
         console.log('Accommodation created successfully:', response);
         this.toaster.success('Accommodation created successfully');
+        // close the modal here with button click id= "closeModal"
+        document.getElementById('closeModal')?.click();
       }, error => {
         console.error('Error creating accommodation:', error);
         if (error.errors.isArray()) {

@@ -1,0 +1,71 @@
+<!-- personal-info.component.html -->
+<h2 class="text-2xl font-bold mb-4">Personal Information</h2>
+
+<div class="w-[96%] m-auto border p-6 rounded-lg">
+  <!-- Display Mode -->
+  <div *ngIf="!editMode">
+    <p><strong>Fist Name:</strong> {{ userInfo.name }}</p>
+    <p><strong>Last Name:</strong> {{ userInfo.familyName }}</p>
+    <p><strong>Email:</strong> {{ userInfo.email }}</p>
+    <p><strong>Identify Document:</strong> {{ userInfo.identityDocument }}</p>
+    <p><strong>Identify Number:</strong> {{ userInfo.identityNumber }}</p>
+    <p><strong>UserName:</strong> {{ userInfo.username }}</p>
+    <p><strong>Password:</strong> ***************</p>
+    <button class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4" (click)="toggleEditMode()">Edit</button>
+  </div>
+
+  <!-- Edit Mode -->
+  <form *ngIf="editMode" (ngSubmit)="saveChanges()">
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="name">First Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="userInfo.name" required
+             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="familyName">Last Name:</label>
+      <input type="text" id="familyName" name="familyName" [(ngModel)]="userInfo.familyName" required
+             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="email">Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="userInfo.email" required
+             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="identityDocument">
+        Identify Document:
+      </label>
+      <select id="identityDocument" name="identityDocument" [(ngModel)]="userInfo.identityDocument" required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <option value="" disabled>Select an option</option>
+        <option *ngFor="let document of identityDocuments" [value]="document" [selected]="document === userInfo.identityDocument">
+          {{ document }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="IdentifyNumber">
+        Identify Number:
+      </label>
+      <input type="text" id="IdentifyNumber" name="IdentifyNumber" [(ngModel)]="userInfo.identityNumber" required
+             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="username">Username:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="userInfo.username" required
+             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="oldPassword">Old Password:</label>
+      <input type="password" id="oldPassword" name="oldPassword" [(ngModel)]="oldPassword"
+             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="newPassword">New Password:</label>
+      <input type="password" id="newPassword" name="newPassword" [(ngModel)]="userInfo.password"
+             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+    </div>
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md">Save</button>
+    <button type="button" class="bg-gray-400 text-white px-4 py-2 rounded-md ml-2" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>

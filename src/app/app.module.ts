@@ -22,6 +22,12 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AccommodationsComponent } from './admin/components/accommodations/accommodations.component';
 import { TripDetailsComponent } from './shared/components/trip-details/trip-details.component';
 import { UserComponent } from './admin/components/user/user.component';
+import { ProfileComponent } from './shared/components/profile/profile.component';
+import { PersonalInfoComponent } from './shared/components/profileComponents/personal-info/personal-info.component';
+import { HistoryComponent } from './shared/components/profileComponents/history/history.component';
+import { MyReservationsComponent } from './shared/components/profileComponents/my-reservations/my-reservations.component';
+import {ChartModule} from "primeng/chart";
+import { OverviewComponent } from './admin/components/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -39,18 +45,24 @@ import { UserComponent } from './admin/components/user/user.component';
     LoginComponent,
     AccommodationsComponent,
     TripDetailsComponent,
-    UserComponent
+    UserComponent,
+    ProfileComponent,
+    PersonalInfoComponent,
+    HistoryComponent,
+    MyReservationsComponent,
+    OverviewComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FullCalendarModule,
-        BrowserAnimationsModule,
-        ToastrModule.forRoot(),
-        FormsModule,
-        ReactiveFormsModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FullCalendarModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    ChartModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
