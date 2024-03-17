@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class OverviewComponent {
   basicData: any;
   basicOptions: any;
+  lineData: any;
+  lineOptions: any;
 
   constructor() {
   }
