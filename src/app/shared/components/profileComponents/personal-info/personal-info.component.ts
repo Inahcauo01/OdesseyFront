@@ -37,8 +37,8 @@ export class PersonalInfoComponent {
     const username = this.extractUsernameFromToken(); // Get the username from token
     this.userService.verifyPassword(username, this.oldPassword).subscribe(
       (response: any) => {
-        console.log("Response (old pwd valid) : ", response);
-        if (response.success) {
+        console.log("Response (old pwd valid) : ", response.result);
+        if (response.result) {
           // Old password is correct, proceed with updating user
           this.userService.updateUser(this.userInfo).subscribe(
             (updateResponse: any) => {
@@ -69,7 +69,7 @@ export class PersonalInfoComponent {
     this.userService.getUserByUserName(username).subscribe(
       (response: any) => {
         this.userInfo = response.result;
-        console.table(response.result);
+        // console.table(response.result);
       },
       (error: any) => {
         console.log(error);
@@ -80,13 +80,13 @@ export class PersonalInfoComponent {
 
   private extractUsernameFromToken() {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('accessToken');
       if (!token){
         console.log('No token found');
         return '';
       }
       const tokenPayload = JSON.parse(atob(token.split('.')[1]));
-      return tokenPayload.username;
+      return tokenPayload.sub;
     }catch (e) {
       console.log(e);
       return '';

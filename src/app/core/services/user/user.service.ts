@@ -26,16 +26,14 @@ export class UserService {
   }
 
   getUserByUserName(username: string) {
-    // return this.http.get(`http://localhost:8080/api/v1/user/username/${username}`);
-    return this.http.get(`http://localhost:8080/api/v1/user/username/inahcauo`);
+    return this.http.get(`http://localhost:8080/api/v1/user/username/${username}`);
   }
 
-  verifyPassword(username: string, oldPassword: string) {
-    return this.http.post(`http://localhost:8080/api/v1/user/verify-password`, {username, oldPassword});
+  verifyPassword(username: string, password: string) {
+    return this.http.post(`http://localhost:8080/api/v1/user/verify-password`, {username, password});
   }
 
   updateUser(userInfo: User) {
     return this.http.put(`http://localhost:8080/api/v1/user`, userInfo);
-
   }
 }
