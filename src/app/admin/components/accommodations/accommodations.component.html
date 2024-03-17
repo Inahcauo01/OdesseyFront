@@ -30,7 +30,6 @@
       <tr *ngFor="let accommodation of accommodations" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900">
           <img src="{{ accommodation.imageName ? 'data:image/jpeg;base64,' + accommodation.imageName : 'assets/accommodation-default.jpg' }}" alt="Hotel" class="w-20 h-12 object-cover rounded-md">
-
         </th>
         <td class="px-6 py-4">
           {{ accommodation.name }}

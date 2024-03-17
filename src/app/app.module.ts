@@ -26,6 +26,8 @@ import { ProfileComponent } from './shared/components/profile/profile.component'
 import { PersonalInfoComponent } from './shared/components/profileComponents/personal-info/personal-info.component';
 import { HistoryComponent } from './shared/components/profileComponents/history/history.component';
 import { MyReservationsComponent } from './shared/components/profileComponents/my-reservations/my-reservations.component';
+import {ChartModule} from "primeng/chart";
+import { OverviewComponent } from './admin/components/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -47,18 +49,20 @@ import { MyReservationsComponent } from './shared/components/profileComponents/m
     ProfileComponent,
     PersonalInfoComponent,
     HistoryComponent,
-    MyReservationsComponent
+    MyReservationsComponent,
+    OverviewComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FullCalendarModule,
-        BrowserAnimationsModule,
-        ToastrModule.forRoot(),
-        FormsModule,
-        ReactiveFormsModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FullCalendarModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    ChartModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
