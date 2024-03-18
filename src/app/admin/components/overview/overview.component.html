@@ -1,3 +1,33 @@
-<div class="card w-[50%]">
-  <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+<div class="flex flex-wrap justify-between mb-6">
+  <!-- User Card -->
+  <div class="bg-blue-900 flex-col flex justify-between text-white rounded-lg shadow-lg p-6 md:w-1/2 lg:w-1/3 xl:w-[calc((100%-4rem)/4)]">
+    <h2 class="font-bold mb-4">Number of Users</h2>
+    <p class="text-xl">{{ numberOfUsers }}</p>
+  </div>
+  <!-- Trip Card -->
+  <div class="bg-blue-900 flex flex-col justify-between text-white rounded-lg shadow-lg p-6 md:w-1/2 lg:w-1/3 xl:w-[calc((100%-4rem)/4)]">
+    <h2 class="font-bold mb-4">Number of Trips</h2>
+    <p class="text-xl">{{ numberOfTrips }}</p>
+  </div>
+  <!-- Accommodation Card -->
+  <div class="bg-blue-900 flex flex-col justify-between text-white rounded-lg shadow-lg p-6 md:w-1/2 lg:w-1/3 xl:w-[calc((100%-4rem)/4)]">
+    <h2 class="font-bold mb-4">Number of Accommodations</h2>
+    <p class="text-xl">{{ numberOfAccommodations }}</p>
+  </div>
+  <!-- Reservation Card -->
+  <div class="bg-blue-900 flex flex-col justify-between text-white rounded-lg shadow-lg p-6 md:w-1/2 lg:w-1/3 xl:w-[calc((100%-4rem)/4)]">
+    <h2 class="font-bold mb-4">Number of Reservations</h2>
+    <p class="text-xl">{{ numberOfReservations }}</p>
+  </div>
 </div>
+
+<div class="grid w-[64%] m-auto my-16 gap-12">
+  <!-- Trip Chart -->
+  <div class="card w-full">
+    <h2 class="text-lg font-bold mb-4">Number of Places & Available Places per Trip</h2>
+    <p-chart type="bar" [data]="tripData" [options]="basicOptions"></p-chart>
+  </div>
+</div>
+<p-chart type="line" [data]="data"></p-chart>
+
+
