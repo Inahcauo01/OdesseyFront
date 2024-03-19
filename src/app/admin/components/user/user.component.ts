@@ -5,12 +5,15 @@ import {ToastrService} from "ngx-toastr";
 import {CUser, User} from "../../../shared/models/User";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {EmailService} from "../../../core/services/email/email.service";
+import {Flowbite} from "../../../config/flowbite";
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
+
+@Flowbite()
 export class UserComponent {
 
   users: User[] = [];

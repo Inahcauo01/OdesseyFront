@@ -3,12 +3,15 @@ import {CTrip, Trip} from "../../../shared/models/Trip";
 import {TripService} from "../../../core/services/trips/trip.service";
 import {initFlowbite} from "flowbite";
 import {ToastrService} from "ngx-toastr";
+import {Flowbite} from "../../../config/flowbite";
 
 @Component({
   selector: 'app-trips',
   templateUrl: './trips.component.html',
   styleUrl: './trips.component.css'
 })
+
+@Flowbite()
 export class TripsComponent {
 
   trips: Trip[] = [];

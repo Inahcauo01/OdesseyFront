@@ -55,7 +55,7 @@ export class LoginComponent {
     // decode the token
     const tokenData = JSON.parse(atob(token.split('.')[1]));
     if (tokenData.roles.some((role: any) => role.authority === 'ROLE_ADMIN')) {
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/admin/dashboard']);
       // this.toastr.info('Admin role')
     } else if (tokenData.roles.some((role: any) => role.authority === 'ROLE_USER')) {
       this.router.navigate(['/']);

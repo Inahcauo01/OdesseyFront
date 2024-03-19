@@ -52,7 +52,7 @@ export class AuthService {
 
 
 
-  logout() {
+    logout() {
     return this.http.post('http://localhost:8080/api/v1/auth/logout', {});
   }
 

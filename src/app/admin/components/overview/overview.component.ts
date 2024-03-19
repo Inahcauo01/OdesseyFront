@@ -2,12 +2,16 @@ import { Component } from '@angular/core';
 import {PrimeNGConfig} from "primeng/api";
 import {StatisticService} from "../../../core/services/statistic/statistic.service";
 import {TripService} from "../../../core/services/trips/trip.service";
+import {initFlowbite} from "flowbite";
+import {Flowbite} from "../../../config/flowbite";
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.css'
 })
+
+@Flowbite()
 export class OverviewComponent {
   basicOptions: any;
   numberOfUsers?: number;
@@ -23,6 +27,8 @@ export class OverviewComponent {
               private tripService: TripService) {}
 
   ngOnInit() {
+    initFlowbite();
+
     this.getStatistic();
 
 

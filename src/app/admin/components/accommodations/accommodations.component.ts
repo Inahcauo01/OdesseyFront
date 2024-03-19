@@ -4,12 +4,15 @@ import {initFlowbite} from "flowbite";
 import {ToastrService} from "ngx-toastr";
 import {AccommodationService} from "../../../core/services/accommodation/accommodation.service";
 import {Accommodation, CAccommodation} from "../../../shared/models/Accommodation";
+import {Flowbite} from "../../../config/flowbite";
 
 @Component({
   selector: 'app-accommodations',
   templateUrl: './accommodations.component.html',
   styleUrl: './accommodations.component.css'
 })
+
+@Flowbite()
 export class AccommodationsComponent {
   accommodations: any[] = [];
   accommodationToSave: Accommodation = new CAccommodation();
