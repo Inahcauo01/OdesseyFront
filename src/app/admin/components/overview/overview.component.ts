@@ -1,65 +1,92 @@
 import { Component } from '@angular/core';
+import {PrimeNGConfig} from "primeng/api";
+import {StatisticService} from "../../../core/services/statistic/statistic.service";
+import {TripService} from "../../../core/services/trips/trip.service";
+import {initFlowbite} from "flowbite";
+import {Flowbite} from "../../../config/flowbite";
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.css'
 })
-export class OverviewComponent {
-  basicData: any;
-  basicOptions: any;
 
-  constructor() {
-  }
+@Flowbite()
+export class OverviewComponent {
+  basicOptions: any;
+  numberOfUsers?: number;
+  numberOfTrips?: number;
+  numberOfReservations?: number = 0;
+  numberOfAccommodations?: number;
+  tripData: any;
+  data: any;
+
+
+  constructor(private primengConfig: PrimeNGConfig,
+              private statisticService: StatisticService,
+              private tripService: TripService) {}
 
   ngOnInit() {
-    const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--text-color');
-    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+    initFlowbite();
 
-    this.basicData = {
-      labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-      datasets: [
-        {
-          label: 'Sales',
-          data: [540, 325, 702, 620],
-          backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
-          borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
-          borderWidth: 1
-        }
-      ]
-    };
+    this.getStatistic();
 
-    this.basicOptions = {
-      plugins: {
-        legend: {
-          labels: {
-            color: textColor
+
+    this.primengConfig.ripple = true;
+
+    this.statisticService.getStatistic().subscribe((result: any) => {
+      const topAccommodations = result.result.topAccommodations; // slice(0, 5) Get top 5 accommodations
+      console.log(topAccommodations);
+      this.data = {
+        labels: topAccommodations.map((accommodation: any) => accommodation.name),
+        datasets: [
+          {
+            data: topAccommodations.map((accommodation: any) => accommodation.tripCount),
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+            hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
           }
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            color: textColorSecondary
+        ]
+      };
+    });
+
+
+    // Trip Data
+    this.getTripData();
+  }
+
+  private getStatistic() {
+    this.statisticService.getStatistic().subscribe((result: any) => {
+      console.log(result.result);
+      this.numberOfUsers = result.result.totalUsers;
+      this.numberOfTrips = result.result.totalTrips;
+      // this.numberOfReservations = result.result.totalReservations;
+      this.numberOfAccommodations = result.result.totalAccommodations;
+    });
+  }
+
+
+  private getTripData() {
+    this.tripService.getTrips().subscribe((data: any) => {
+      this.tripData = {
+        labels: data.result.map((trip: any) => trip.title),
+        datasets: [
+          {
+            label: 'Total Places',
+            data: data.result.map((trip: any) => trip.seats),
+            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            borderColor: 'rgb(255, 159, 64)',
+            borderWidth: 1
           },
-          grid: {
-            color: surfaceBorder,
-            drawBorder: false
+          {
+            label: 'Reserved Places',
+            data: [40, 29, 30, 52, 30, 55],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgb(75, 192, 192)',
+            borderWidth: 1
           }
-        },
-        x: {
-          ticks: {
-            color: textColorSecondary
-          },
-          grid: {
-            color: surfaceBorder,
-            drawBorder: false
-          }
-        }
+        ]
       }
-    };
+    }
+    );
   }
 }

@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {initFlowbite} from "flowbite";
+import {Flowbite} from "../../../config/flowbite";
 
 
 @Component({
@@ -6,6 +8,14 @@ import {Component} from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
+
+@Flowbite()
 export class DashboardComponent {
 
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    initFlowbite();
+  }
 }

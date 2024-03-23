@@ -3,7 +3,8 @@ export interface Accommodation {
   name? : string,
   type? : string,
   address? : string,
-  imageName?: string
+  imageName?: string,
+  tripCount?: number
 }
 
 export class CAccommodation implements Accommodation {
@@ -12,6 +13,7 @@ export class CAccommodation implements Accommodation {
     name? : string,
     type? : string,
     address? : string,
-    imageName?: string
+    imageName?: string,
+    tripCount?: number
   ){}
 }

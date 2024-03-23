@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import {TripService} from "../../../core/services/trips/trip.service";
 import {ToastrService} from "ngx-toastr";
 import {Trip} from "../../../shared/models/Trip";
+import {initFlowbite} from "flowbite";
 
 @Component({
   selector: 'app-calendar',
@@ -24,6 +25,7 @@ export class CalendarComponent {
   constructor(private tripService: TripService, private toastr: ToastrService) {}
 
   ngOnInit() {
+    initFlowbite();
     this.loadTrips();
   }
 
