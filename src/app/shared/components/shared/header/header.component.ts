@@ -27,7 +27,6 @@ export class HeaderComponent {
         this.router.navigate(['/login']);
         this.toastr.success('Logout successful');
       }
-      this.toastr.info('You are not logged in');
     }, (error) => {
       console.error(error);
       this.toastr.error('Error during logout'+error.error.message);
