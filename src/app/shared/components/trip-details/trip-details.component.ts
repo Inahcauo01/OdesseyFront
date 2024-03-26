@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import {TripService} from "../../../core/services/trips/trip.service";
 import {ToastrService} from "ngx-toastr";
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CTrip} from "../../models/Trip";
 import {initFlowbite} from "flowbite";
+import {ReservationService} from "../../../core/services/reservation.service";
 
 @Component({
   selector: 'app-trip-details',
@@ -19,7 +20,9 @@ export class TripDetailsComponent {
   tripDetails :any = new CTrip();
 
   constructor(private tripService: TripService,
+              private reservationService: ReservationService,
               private toastr: ToastrService,
+              private router: Router,
               private http: HttpClient,
               private route: ActivatedRoute) {}
 
@@ -61,6 +64,11 @@ export class TripDetailsComponent {
   }
 
   reserveTrip() {
-    this.toastr.success('Trip reserved successfully', 'Success');
+    this.reservationService.saveReservation(this.tripId).subscribe((data: any) => {
+      this.toastr.success('Trip reserved successfully', 'Success');
+      this.router.navigate(['/reservation-page', data.result['id']]);
+    }, (error) => {
+      this.toastr.error('Error while reserving trip', 'Error');
+    });
   }
 }

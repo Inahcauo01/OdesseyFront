@@ -1,0 +1,10 @@
+<div class="container my-16 flex px-10">
+  <div *ngIf="pdfBytes">
+    <!-- Display PDF in an iframe -->
+    <iframe width="100%" height="600px" [src]="getPdfUrl()" frameborder="0"></iframe>
+
+    <!-- Button to download PDF -->
+    <button (click)="downloadPdf()">Download PDF</button>
+  </div>
+
+</div>

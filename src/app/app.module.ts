@@ -28,6 +28,7 @@ import { HistoryComponent } from './shared/components/profileComponents/history/
 import { MyReservationsComponent } from './shared/components/profileComponents/my-reservations/my-reservations.component';
 import {ChartModule} from "primeng/chart";
 import { OverviewComponent } from './admin/components/overview/overview.component';
+import { ReservationPageComponent } from './shared/components/reservation-page/reservation-page.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { OverviewComponent } from './admin/components/overview/overview.componen
     PersonalInfoComponent,
     HistoryComponent,
     MyReservationsComponent,
-    OverviewComponent
+    OverviewComponent,
+    ReservationPageComponent
   ],
   imports: [
     BrowserModule,
