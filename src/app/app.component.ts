@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {initFlowbite} from "flowbite";
+import AOS from 'aos';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,6 @@ export class AppComponent {
 
   ngOnInit(): void {
     initFlowbite();
+    AOS.init();
   }
 }

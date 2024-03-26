@@ -63,9 +63,9 @@ import { ReservationPageComponent } from './shared/components/reservation-page/r
     ToastrModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    ChartModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

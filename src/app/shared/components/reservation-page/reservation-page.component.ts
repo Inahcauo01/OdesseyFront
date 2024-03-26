@@ -17,7 +17,6 @@ export class ReservationPageComponent {
               private toaster: ToastrService) { }
 
   ngOnInit(): void {
-    this.getTicket();
   }
 
   private getTicket() {
@@ -43,15 +42,6 @@ export class ReservationPageComponent {
   }
 
   downloadPdf() {
-    if (this.pdfBytes) {
-      const blob = new Blob([this.pdfBytes], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'ticket.pdf';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    }
+    this.getTicket();
   }
 }

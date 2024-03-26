@@ -1,10 +1,44 @@
-<div class="container my-16 flex px-10">
-  <div *ngIf="pdfBytes">
-    <!-- Display PDF in an iframe -->
-    <iframe width="100%" height="600px" [src]="getPdfUrl()" frameborder="0"></iframe>
-
-    <!-- Button to download PDF -->
-    <button (click)="downloadPdf()">Download PDF</button>
+<div class="container mt-20 mb-16  flex px-10 h-full">
+  <div class="w-2/3 m-auto p-10 border rounded-lg h-[70vh]">
+    <div class="flex justify-center flex-col items-center">
+      <h1 class="nav__logo">
+        ODYSSEY<span class="text-primary">.</span>
+      </h1>
+      <div class="my-4">
+        <svg width="180px" height="180px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.8 4C1.86451 4 1.0468 4.46923 0.544325 5.16792C0.20074 5.64567 0 6.23499 0 6.86667V17.1333C0 18.682 1.21964 20 2.8 20H11.2C11.7523 20 12.2 19.5523 12.2 19C12.2 18.4477 11.7523 18 11.2 18H2.8C2.39214 18 2 17.6466 2 17.1333V7.94766L7.77948 14.3096C8.96986 15.6199 11.0301 15.6199 12.2205 14.3096L18 7.94766V13.1333C18 13.6856 18.4477 14.1333 19 14.1333C19.5523 14.1333 20 13.6856 20 13.1333V6.86667C20 6.235 19.7993 5.64567 19.4557 5.16792C18.9532 4.46923 18.1355 4 17.2 4H2.8ZM9.25983 12.9647L2.9327 6H17.0673L10.7402 12.9647C10.3434 13.4015 9.65662 13.4015 9.25983 12.9647ZM22.7894 16.6139C23.1284 16.178 23.0499 15.5497 22.6139 15.2106C22.178 14.8716 21.5497 14.9501 21.2106 15.3861L17.2268 20.5081L15.6941 19.0302C15.2966 18.6468 14.6635 18.6583 14.2802 19.0559C13.8968 19.4534 13.9083 20.0865 14.3059 20.4698L16.6392 22.7198C16.8434 22.9167 17.1216 23.0177 17.4045 22.9975C17.6875 22.9773 17.9485 22.8379 18.1227 22.6139L22.7894 16.6139Z" fill="#2f73d9"></path>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <h3 class="text-2xl text-center">
+      Thank you for booking your trip with us! Your reservation has been successfully validated.
+    </h3>
+    <p class="text-center mt-8 text-gray-600">
+      You will receive your ticket via email shortly.<br>
+      We look forward to providing you with a memorable travel experience
+    </p>
+    <div class="flex justify-center my-6 text-xs">
+      <button class="btn btn-primary flex items-center gap-4" (click)="downloadPdf()">
+        <span>Download Ticket</span>
+        <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier"> <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </button>
+    </div>
   </div>
 
+
+
+  <div *ngIf="pdfBytes">
+    <!-- Display PDF using the object tag -->
+    <object [data]="getPdfUrl()" type="application/pdf" width="100%" height="600px"></object>
+  </div>
 </div>
