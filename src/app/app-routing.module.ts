@@ -16,6 +16,7 @@ import {PersonalInfoComponent} from "./shared/components/profileComponents/perso
 import {MyReservationsComponent} from "./shared/components/profileComponents/my-reservations/my-reservations.component";
 import {HistoryComponent} from "./shared/components/profileComponents/history/history.component";
 import {OverviewComponent} from "./admin/components/overview/overview.component";
+import {ReservationPageComponent} from "./shared/components/reservation-page/reservation-page.component";
 
 const routes: Routes = [
   { path: '', component: LayoutComponent, children: [
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent},
       { path: 'destinations', component: DestinationsComponent},
       { path: 'trip-details/:id', component: TripDetailsComponent },
+      { path: 'reservation-page/:id', component: ReservationPageComponent}
   ]},
 
   { path: 'admin', component: AdminLayoutComponent, children: [

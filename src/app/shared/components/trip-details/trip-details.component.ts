@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import {TripService} from "../../../core/services/trips/trip.service";
 import {ToastrService} from "ngx-toastr";
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CTrip} from "../../models/Trip";
 import {initFlowbite} from "flowbite";
+import {ReservationService} from "../../../core/services/reservation.service";
 
 @Component({
   selector: 'app-trip-details',
@@ -17,9 +18,12 @@ export class TripDetailsComponent {
   images: any[] = [];
   tripId?: number ;
   tripDetails :any = new CTrip();
+  reservationObjet: any = {};
 
   constructor(private tripService: TripService,
+              private reservationService: ReservationService,
               private toastr: ToastrService,
+              private router: Router,
               private http: HttpClient,
               private route: ActivatedRoute) {}
 
@@ -53,14 +57,34 @@ export class TripDetailsComponent {
   private getTripDetails() {
     this.tripService.getTripDetails(this.tripId).subscribe((data: any) => {
       // this.getPexelsImage(data.result.city);
-      this.getUnsplashImages(data.result.city);
+      // this.getUnsplashImages(data.result.city);
       this.tripDetails = data.result;
     }, (error) => {
       this.toastr.error('Error loading trip details', 'Error');
     });
   }
 
-  reserveTrip() {
-    this.toastr.success('Trip reserved successfully', 'Success');
+  reserveTrip(tripId: number) {
+    this.reservationObjet.tripId = tripId;
+    this.reservationObjet.reservationDate = new Date();
+    this.reservationObjet.username = this.extractUsernameFromToken();
+
+    this.reservationService.saveReservation(this.reservationObjet).subscribe((data: any) => {
+      this.toastr.success('Trip reserved successfully', 'Success');
+      this.router.navigate(['/reservation-page', data.result['id']]);
+    }, (error) => {
+      this.toastr.error('Error while reserving trip', 'Error');
+      console.error(error);
+    });
+  }
+
+  private extractUsernameFromToken(): string {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      const payload = token.split('.')[1];
+      const decodedPayload = window.atob(payload);
+      return JSON.parse(decodedPayload).sub;
+    }
+    return '';
   }
 }

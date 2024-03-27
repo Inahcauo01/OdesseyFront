@@ -42,4 +42,5 @@ export class TripService {
   deleteTrip(id: number | undefined) {
       return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
 }

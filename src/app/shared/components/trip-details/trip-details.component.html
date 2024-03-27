@@ -20,8 +20,8 @@
     <div class="flex flex-col space-y-4">
       <div class="flex gap-8 mb-6">
         <h2 class="text-2xl font-semibold">{{ tripDetails.title }}</h2>
-        <button class="w-[40%] m-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded" (click)="reserveTrip()">
-          book
+        <button (click)="reserveTrip(tripDetails.id)" class="w-[40%] m-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded">
+          BOOK NOW
         </button>
       </div>
 
