@@ -21,7 +21,7 @@ export class ReservationService {
   }
 
   saveReservation(reservation: any) {
-    return this.http.post('${this.apiUrl}/reservation', reservation);
+    return this.http.post(`${this.apiUrl}/reservation`, reservation);
   }
 
   sendTicketByEmail(reservation : any) {

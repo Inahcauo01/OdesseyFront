@@ -30,6 +30,7 @@ import {ChartModule} from "primeng/chart";
 import { OverviewComponent } from './admin/components/overview/overview.component';
 import { ReservationPageComponent } from './shared/components/reservation-page/reservation-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +64,7 @@ import { ReservationPageComponent } from './shared/components/reservation-page/r
     ToastrModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    ChartModule
+    ChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
