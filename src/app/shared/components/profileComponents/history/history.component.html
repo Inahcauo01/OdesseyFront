@@ -1,3 +1,71 @@
 <!-- history.component.html -->
 <h2 class="text-2xl font-bold mb-4">Reservation History</h2>
-<!-- Table to display reservation history -->
+
+<div class="flex flex-col">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
+          <thead class="border-b border-neutral-200 dark:border-white/10">
+          <tr>
+            <th scope="col" class="px-6 py-4">#</th>
+            <th scope="col" class="px-6 py-4">
+              Departure Date
+            </th>
+            <th scope="col" class="px-6 py-4">
+              Duration
+            </th>
+            <th scope="col" class="px-6 py-4">
+              Destination
+            </th>
+            <th scope="col" class="px-6 py-4">
+              Accommodation
+            </th>
+            <th scope="col" class="px-6 py-4">
+              Cost
+            </th>
+            <th scope="col" class="px-6 py-4">
+              Date Reservation
+            </th>
+            <th scope="col" class="px-6 py-4">
+              Status
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let reservation of reservations; let i = index" class="border-b border-neutral-200 transition duration-300 ease-in-out hover:bg-blue-50 dark:border-white/10 dark:hover:bg-neutral-600">
+            <td colspan="8" *ngIf="reservations.length == 0" class="text-gray-500">
+              There is no old reservations
+            </td>
+
+            <td class="whitespace-nowrap px-6 py-4 font-medium">{{ i+1 }}</td>
+            <td class="whitespace-nowrap px-6 py-4">
+              {{ reservation.trip.departureDate }}
+            </td>
+            <td class="whitespace-nowrap px-6 py-4">
+              {{ reservation.trip.duration }} days
+            </td>
+            <td class="whitespace-nowrap px-6 py-4">
+              {{ reservation.trip.city.name }} - {{ reservation.trip.country.name }}
+            </td>
+            <td class="whitespace-nowrap px-6 py-4">
+              {{ reservation.trip.accommodation.name }} <span class="text-xs">({{ reservation.trip.accommodation.type }})</span>
+            </td>
+            <td class="whitespace-nowrap px-6 py-4">
+              {{ reservation.trip.duration }}
+            </td>
+            <td class="whitespace-nowrap px-6 py-4">
+              {{ reservation.reservationDate }}
+            </td>
+            <td class="whitespace-nowrap px-6 py-4">
+              <span class="text-xs p-1 px-2 text-white rounded-2xl bg-red-500">
+                {{ reservation.status }}
+              </span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
