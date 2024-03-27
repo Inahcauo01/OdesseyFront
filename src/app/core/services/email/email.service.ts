@@ -13,5 +13,9 @@ export class EmailService {
     return this.http.post('http://localhost:8080/api/v1/email', email);
   }
 
+  sendEmailWithAttachment(emailRequest: any): Observable<any> {
+    return this.http.post('http://localhost:8080/api/v1/email/attachment', emailRequest);
+  }
+
 
 }

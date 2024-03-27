@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CTrip} from "../../models/Trip";
 import {initFlowbite} from "flowbite";
 import {ReservationService} from "../../../core/services/reservation.service";
+import {EmailService} from "../../../core/services/email/email.service";
 
 @Component({
   selector: 'app-trip-details',
@@ -19,9 +20,11 @@ export class TripDetailsComponent {
   tripId?: number ;
   tripDetails :any = new CTrip();
   reservationObjet: any = {};
+  emailRequestObj: any = {};
 
   constructor(private tripService: TripService,
               private reservationService: ReservationService,
+              private emailService: EmailService,
               private toastr: ToastrService,
               private router: Router,
               private http: HttpClient,
@@ -68,10 +71,22 @@ export class TripDetailsComponent {
     this.reservationObjet.tripId = tripId;
     this.reservationObjet.reservationDate = new Date();
     this.reservationObjet.username = this.extractUsernameFromToken();
+    console.log('username : '+this.extractUsernameFromToken());
 
     this.reservationService.saveReservation(this.reservationObjet).subscribe((data: any) => {
+
+      this.emailRequestObj.email = this.extractEmailFromToken();
+      this.emailRequestObj.reservationId = data.result.id;
+
+      this.emailService.sendEmailWithAttachment(this.emailRequestObj).subscribe((data: any) => {
+        this.toastr.success('Trip reserved successfully', 'Success');
+      }, (error) => {
+        this.toastr.error('Error while sending email', 'Error');
+        console.error(error);
+      });
       this.toastr.success('Trip reserved successfully', 'Success');
       this.router.navigate(['/reservation-page', data.result['id']]);
+
     }, (error) => {
       this.toastr.error('Error while reserving trip', 'Error');
       console.error(error);
@@ -84,6 +99,16 @@ export class TripDetailsComponent {
       const payload = token.split('.')[1];
       const decodedPayload = window.atob(payload);
       return JSON.parse(decodedPayload).sub;
+    }
+    return '';
+  }
+
+  private extractEmailFromToken() {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      const payload = token.split('.')[1];
+      const decodedPayload = window.atob(payload);
+      return JSON.parse(decodedPayload).email;
     }
     return '';
   }

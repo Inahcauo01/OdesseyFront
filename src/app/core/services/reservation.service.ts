@@ -17,7 +17,7 @@ export class ReservationService {
   }
 
   getReservations() {
-    return this.http.get('${this.apiUrl}/reservation');
+    return this.http.get(`${this.apiUrl}/reservation`);
   }
 
   saveReservation(reservation: any) {
@@ -25,7 +25,11 @@ export class ReservationService {
   }
 
   sendTicketByEmail(reservation : any) {
-    return this.http.post('${this.apiUrl}/email/attachment', reservation);
+    return this.http.post(`${this.apiUrl}/email/attachment`, reservation);
 
+  }
+
+  getReservationsByUserIdAndStatus(id: number, status: string) {
+    return this.http.get(`${this.apiUrl}/reservation/user/${id}/${status}`);
   }
 }
